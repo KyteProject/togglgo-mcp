@@ -1,26 +1,30 @@
 # Toggl MCP Server
 
+![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+![Coverage](https://img.shields.io/badge/coverage-86.4%25-brightgreen?style=for-the-badge)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen?style=for-the-badge)
+
 A lightweight MCP (Model Context Protocol) server for Toggl time tracking, built in Go.
 
 ## Features
 
 ### Time Entry Management
 
-- **start_time_entry** - Start a new time entry
-- **stop_time_entry** - Stop the current running time entry
-- **get_current_time_entry** - Get the currently running time entry
-- **get_time_entries** - Get time entries with optional date filtering
-- **get_time_entries_for_day** - Get time entries for a specific day (convenience)
+- ⚠️ **start_time_entry** - Start a new time entry
+- ⚠️ **stop_time_entry** - Stop the current running time entry
+- ✅ **get_current_time_entry** - Get the currently running time entry
+- ✅ **get_time_entries** - Get time entries with optional date filtering
+- ✅ **get_time_entries_for_day** - Get time entries for a specific day (convenience)
 
 ### Project Management
 
-- **create_project** - Create a new project
-- **get_projects** - Get projects in a workspace
+- ✅ **create_project** - Create a new project
+- ✅ **get_projects** - Get projects in a workspace
 
 ### Out of Scope
 
-- **delete_project**
-- **delete_entry**
+- 🚫 **delete_project**
+- 🚫 **delete_entry**
 
 ## Project Structure
 
@@ -51,6 +55,32 @@ togglgo-mcp/
 ```bash
 go mod tidy
 go build -o toggl-mcp
+```
+
+## Development
+
+### Prerequisites
+
+- Go 1.21 or later
+- Toggl API token for testing
+
+### Building and Testing
+
+```bash
+# Install dependencies
+go mod tidy
+
+# Run tests
+go test ./app -v
+
+# Run tests with coverage
+go test ./app -cover
+
+# Build the binary
+go build -o toggl-mcp
+
+# Run the MCP server (for debugging)
+./toggl-mcp
 ```
 
 ## Install & Usage with Claude Desktop
@@ -141,4 +171,26 @@ Convenience tool that automatically handles the date range for a single day.
 - `workspace_id` (required) - Workspace ID
 - `active` (optional) - Filter by active status
 
----
+## Testing
+
+The project includes comprehensive test coverage (86.4%) for all major components.
+
+### Running Tests
+
+```bash
+# Run all tests
+go test ./app
+
+# Run tests with verbose output
+go test ./app -v
+
+# Run tests with coverage
+go test ./app -cover
+
+# Generate detailed coverage report
+go test ./app -coverprofile=coverage.out
+go tool cover -html=coverage.out -o coverage.html
+
+# Generate function-level coverage report
+go tool cover -func=coverage.out
+```
