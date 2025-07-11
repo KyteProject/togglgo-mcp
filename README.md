@@ -21,7 +21,14 @@ A lightweight MCP (Model Context Protocol) server for Toggl time tracking, built
 - ✅ **create_project** - Create a new project
 - ✅ **get_projects** - Get projects in a workspace
 
+### TODO
+
+- **update_time_entry**
+- **update_project**
+
 ### Out of Scope
+
+For now I've chosen to leave these out-of-scope to minimise risk of accidental destructive actions.
 
 - 🚫 **delete_project**
 - 🚫 **delete_entry**
